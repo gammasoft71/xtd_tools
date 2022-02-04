@@ -9,8 +9,6 @@ using namespace xtd_tools;
 main_form::main_form() {
   text("xtd tools");
   client_size({300, 400});
-  minimum_client_size(client_size());
-  maximum_client_size(client_size());
   padding(10);
   menu(main_menu);
   

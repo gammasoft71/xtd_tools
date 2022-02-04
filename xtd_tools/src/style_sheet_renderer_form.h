@@ -13,7 +13,7 @@ namespace xtd_tools {
     
   private:
     xtd::forms::text_box style_sheet_text_box;
-    xtd::forms::button apply_button;
+    xtd::forms::button run_button;
     xtd::forms::panel style_heet_panel;
     xtd::forms::button style_sheet_rendered_button;
     xtd::forms::label text_label;

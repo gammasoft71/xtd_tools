@@ -10,9 +10,21 @@ style_sheet_renderer_form::style_sheet_renderer_form() {
   client_size({1000, 400});
   minimum_client_size({800, 200});
   maximize_box(false);
-  controls().push_back_range({style_sheet_text_box, apply_button, style_heet_panel});
+  controls().push_back_range({style_sheet_text_box, run_button, style_heet_panel});
   
-  style_sheet_text_box.location({10, 10});
+  run_button.location({10, 10});
+  run_button.anchor(anchor_styles::top | anchor_styles::left);
+  run_button.text("Run");
+  run_button.image(forms::button_images::from_name("media-playback-start"));
+  run_button.image_align(content_alignment::middle_left);
+  run_button.click += [&] {
+    style_sheet_rendered_button.style_sheet(style_sheet_text_box.text());
+    style_sheet_rendered_button.invalidate();
+    style_sheet_rendered_button.refresh();
+  };
+
+  
+  style_sheet_text_box.location({10, 40});
   style_sheet_text_box.size({650, 355});
   style_sheet_text_box.anchor(anchor_styles::top | anchor_styles::left | anchor_styles::bottom);
   style_sheet_text_box.multiline(true);
@@ -39,7 +51,7 @@ style_sheet_renderer_form::style_sheet_renderer_form() {
   
   style_heet_panel.location({670, 10});
   style_heet_panel.border_style(forms::border_style::solid);
-  style_heet_panel.size({320, 355});
+  style_heet_panel.size({320, 385});
   style_heet_panel.anchor(anchor_styles::top | anchor_styles::left | anchor_styles::bottom | anchor_styles::right);
   style_heet_panel.controls().push_back_range({style_sheet_rendered_button, back_color_label, back_color_text_box, fore_color_label, fore_color_text_box, size_label, width_numeric_up_down, height_numeric_up_down, text_label, text_text_box});
 
@@ -107,15 +119,6 @@ style_sheet_renderer_form::style_sheet_renderer_form() {
   fore_color_text_box.text_changed += [&] {
     style_heet_panel.fore_color(drawing::color::parse(fore_color_text_box.text()));
   };
-  
-  apply_button.location({10, 370});
-  apply_button.width(980);
-  apply_button.anchor(anchor_styles::left | anchor_styles::bottom | anchor_styles::right);
-  apply_button.text("Run");
-  apply_button.click += [&] {
-    style_sheet_rendered_button.style_sheet(style_sheet_text_box.text());
-    style_sheet_rendered_button.invalidate();
-    style_sheet_rendered_button.refresh();
-  };
-  apply_button.perform_click();
+
+  run_button.perform_click();
 }
