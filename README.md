@@ -1,6 +1,6 @@
 # xtd_tools
 
-**The xtd_tools project is a collection of tools to help xtd development.**
+**The xtd_tools project is a collection of tools to help xtd development. This project works on Windows, macOS and Linux platforms.**
 
 [![logo](https://github.com/gammasoft71/xtd_tools/blob/main/docs/pictures/logo.png)](https://gammasoft71.wixsite.com/xtdpro)
 
@@ -14,9 +14,11 @@
 
 ## xtd
 
+This project is entirely written with the [xtd](https://github.com/gammasoft71/xtd) framework.
+
 For more information about xtd see :
 * [website](https://gammasoft71.wixsite.com/xtdpro)
 * [wiki](https://github.com/gammasoft71/xtd/blob/master/docs/home.md)
-* [sources](https://github.com/gammasoft71/xtd) 
+* [github](https://github.com/gammasoft71/xtd) 
 * [project](https://sourceforge.net/projects/xtdpro/) 
 * [Reference Guide](https://codedocs.xyz/gammasoft71/xtd/index.html)
