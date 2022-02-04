@@ -28,6 +28,7 @@ namespace xtd_tools {
 
     void on_child_form_closed(xtd::object& sender, const xtd::forms::form_closed_event_args& e);
     void on_help_about_menu_item_click(xtd::object& sender, const xtd::event_args& e);
+    void on_help_xtd_reference_guide_item_click(xtd::object& sender, const xtd::event_args& e);
 
     xtd::forms::list_box tools_list_box;
     std::vector<std::shared_ptr<xtd::forms::form>> childs;
@@ -38,8 +39,10 @@ namespace xtd_tools {
     xtd::forms::menu_item tools_exit_menu_item {xtd::forms::system_texts::exit(), overload_<>(&xtd::forms::application::exit), xtd::forms::shortcut::alt_f4};
     xtd::forms::menu_item tools_menu_item {"&Tools", {tools_color_converter_menu_item, tools_style_sheet_renderer_menu_item, tools_separator_menu_item, tools_exit_menu_item}};
 
+    xtd::forms::menu_item help_xtd_reference_guide_item {"&xtd reference guide", {*this, &main_form::on_help_xtd_reference_guide_item_click}};
+    xtd::forms::menu_item help_separator_menu_item {"-"};
     xtd::forms::menu_item help_about_menu_item {xtd::forms::system_texts::about(), {*this, &main_form::on_help_about_menu_item_click}};
-    xtd::forms::menu_item help_menu_item {xtd::forms::system_texts::help(), {help_about_menu_item}};
+    xtd::forms::menu_item help_menu_item {xtd::forms::system_texts::help(), {help_xtd_reference_guide_item, help_separator_menu_item, help_about_menu_item}};
 
     xtd::forms::main_menu main_menu {tools_menu_item, help_menu_item};
   };

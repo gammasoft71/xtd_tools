@@ -32,5 +32,9 @@ void main_form::on_child_form_closed(object& sender, const form_closed_event_arg
 }
 
 void main_form::on_help_about_menu_item_click(object& sender, const xtd::event_args& e) {
-  about_box::show("xtd tools helper", "xtd tools", properties::resources::xtd_tools(), "1.0", "1.0.0", "Copyright (c) 2022 Gammasoft.\nAll rights reserved.", "https://gammasoft71.wixsite.com/gammasoft", "Gammasoft");
+  about_box::show("The xtd_tools project is a collection of\ntools to help xtd development.", "xtd tools", properties::resources::xtd_tools(), "1.0", "1.0.0", "Copyright (c) 2022 Gammasoft.\nAll rights reserved.", "https://gammasoft71.wixsite.com/gammasoft", "Gammasoft");
+}
+
+void main_form::on_help_xtd_reference_guide_item_click(object& sender, const xtd::event_args& e) {
+  diagnostics::process::start("https://codedocs.xyz/gammasoft71/xtd/index.html");
 }
