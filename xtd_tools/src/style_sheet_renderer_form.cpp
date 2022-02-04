@@ -5,7 +5,7 @@ using namespace xtd::drawing;
 using namespace xtd::forms;
 using namespace xtd_tools;
 
-style_sheet_renderer::style_sheet_renderer() {
+style_sheet_renderer_form::style_sheet_renderer_form() {
   text("Style sheet renderer");
   client_size({1000, 400});
   minimum_client_size({800, 200});
@@ -41,17 +41,45 @@ style_sheet_renderer::style_sheet_renderer() {
   style_heet_panel.border_style(forms::border_style::solid);
   style_heet_panel.size({320, 355});
   style_heet_panel.anchor(anchor_styles::top | anchor_styles::left | anchor_styles::bottom | anchor_styles::right);
-  style_heet_panel.controls().push_back_range({style_sheet_rendered_button, back_color_label, back_color_text_box, fore_color_label, fore_color_text_box});
+  style_heet_panel.controls().push_back_range({style_sheet_rendered_button, back_color_label, back_color_text_box, fore_color_label, fore_color_text_box, size_label, width_numeric_up_down, height_numeric_up_down, text_label, text_text_box});
 
   style_sheet_rendered_button.location({10, 10});
   style_sheet_rendered_button.text("Button 1");
+
+  size_label.location({10, 235});
+  size_label.auto_size(true);
+  size_label.text("size (W x H)");
+  size_label.anchor(anchor_styles::left | anchor_styles::bottom);
   
-  back_color_text_box.text_changed += [&] {
-    style_heet_panel.back_color(drawing::color::parse(back_color_text_box.text()));
+  width_numeric_up_down.location({100, 235});
+  width_numeric_up_down.width(100);
+  width_numeric_up_down.value(style_sheet_rendered_button.width());
+  width_numeric_up_down.maximum(10000);
+  width_numeric_up_down.anchor(anchor_styles::left | anchor_styles::bottom);
+  width_numeric_up_down.value_changed += [&]{
+    style_sheet_rendered_button.width(width_numeric_up_down.value());
   };
   
-  fore_color_text_box.text_changed += [&] {
-    style_heet_panel.fore_color(drawing::color::parse(fore_color_text_box.text()));
+  height_numeric_up_down.location({210, 235});
+  height_numeric_up_down.width(100);
+  height_numeric_up_down.value(style_sheet_rendered_button.height());
+  height_numeric_up_down.maximum(10000);
+  height_numeric_up_down.anchor(anchor_styles::left | anchor_styles::bottom);
+  height_numeric_up_down.value_changed += [&]{
+    style_sheet_rendered_button.height(height_numeric_up_down.value());
+  };
+
+  text_label.location({10, 265});
+  text_label.auto_size(true);
+  text_label.text("Text");
+  text_label.anchor(anchor_styles::left | anchor_styles::bottom);
+
+  text_text_box.location({100, 265});
+  text_text_box.width(150);
+  text_text_box.text(style_sheet_rendered_button.text());
+  text_text_box.anchor(anchor_styles::left | anchor_styles::bottom);
+  text_text_box.text_changed += [&]{
+    style_sheet_rendered_button.text(text_text_box.text());
   };
 
   back_color_label.location({10, 295});
@@ -61,9 +89,12 @@ style_sheet_renderer::style_sheet_renderer() {
 
   back_color_text_box.location({100, 295});
   back_color_text_box.width(150);
-  back_color_text_box.text("contrtol");
+  back_color_text_box.text("control");
   back_color_text_box.anchor(anchor_styles::left | anchor_styles::bottom);
-
+  back_color_text_box.text_changed += [&] {
+    style_heet_panel.back_color(drawing::color::parse(back_color_text_box.text()));
+  };
+  
   fore_color_label.location({10, 325});
   fore_color_label.auto_size(true);
   fore_color_label.text("Fore color");
@@ -73,11 +104,14 @@ style_sheet_renderer::style_sheet_renderer() {
   fore_color_text_box.width(150);
   fore_color_text_box.text("control text");
   fore_color_text_box.anchor(anchor_styles::left | anchor_styles::bottom);
-
+  fore_color_text_box.text_changed += [&] {
+    style_heet_panel.fore_color(drawing::color::parse(fore_color_text_box.text()));
+  };
+  
   apply_button.location({10, 370});
   apply_button.width(980);
   apply_button.anchor(anchor_styles::left | anchor_styles::bottom | anchor_styles::right);
-  apply_button.text("Apply");
+  apply_button.text("Run");
   apply_button.click += [&] {
     style_sheet_rendered_button.style_sheet(style_sheet_text_box.text());
     style_sheet_rendered_button.invalidate();

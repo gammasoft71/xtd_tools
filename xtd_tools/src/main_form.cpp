@@ -19,9 +19,13 @@ main_form::main_form() {
   tools_list_box.items({"Color converter", "Style sheet renderer", });
   
   tools_list_box.double_click += [&] {
-    if (tools_list_box.selected_item().value() == "Color converter") creates_tool<color_converter>();
-    if (tools_list_box.selected_item().value() == "Style sheet renderer") creates_tool<style_sheet_renderer>();
+    if (tools_list_box.selected_item().value() == "Color converter") creates_form<color_converter_form>();
+    if (tools_list_box.selected_item().value() == "Style sheet renderer") creates_form<style_sheet_renderer_form>();
   };
+}
+
+void main_form::main() {
+  application::run(main_form());
 }
 
 void main_form::on_child_form_closed(object& sender, const form_closed_event_args& e) {
@@ -31,8 +35,4 @@ void main_form::on_child_form_closed(object& sender, const form_closed_event_arg
 
 void main_form::on_help_about_menu_item_click(object& sender, const xtd::event_args& e) {
   about_box::show("xtd tools helper", "xtd tools", properties::resources::xtd_tools(), "1.0", "1.0.0", "Copyright (c) 2022 Gammasoft.\nAll rights reserved.", "https://gammasoft71.wixsite.com/gammasoft", "Gammasoft");
-}
-
-void main_form::main() {
-  application::run(main_form());
 }

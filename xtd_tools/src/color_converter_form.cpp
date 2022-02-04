@@ -5,7 +5,7 @@ using namespace xtd::drawing;
 using namespace xtd::forms;
 using namespace xtd_tools;
 
-color_converter::color_converter() {
+color_converter_form::color_converter_form() {
   text("Color converter");
   client_size({470, 130});
   maximize_box(false);
@@ -13,9 +13,9 @@ color_converter::color_converter() {
   maximum_client_size(client_size());
   controls().push_back_range({color_label, color_text_box, color_panel, color_value_label, darker_label, darker_numeric_up_down, darker_panel, darker_value_label, lighter_label, lighter_numeric_up_down, lighter_panel, lighter_value_label});
   
-  color_text_box.text_changed += {*this, &color_converter::update_colors};
-  darker_numeric_up_down.value_changed += {*this, &color_converter::update_colors};
-  lighter_numeric_up_down.value_changed += {*this, &color_converter::update_colors};
+  color_text_box.text_changed += {*this, &color_converter_form::update_colors};
+  darker_numeric_up_down.value_changed += {*this, &color_converter_form::update_colors};
+  lighter_numeric_up_down.value_changed += {*this, &color_converter_form::update_colors};
 
   color_label.location({10, 11});
   color_label.auto_size(true);
@@ -69,16 +69,16 @@ color_converter::color_converter() {
   lighter_value_label.auto_size(true);
 }
 
-void color_converter::update_colors() {
-  drawing::color color = drawing::color::parse(color_text_box.text());
+void color_converter_form::update_colors() noexcept {
+  auto color = drawing::color::parse(color_text_box.text());
   color_panel.back_color(color);
   color_value_label.text(ustring::format("0x{:X8}", color.to_argb()));
   
-  drawing::color dark_color = drawing::color::dark(color, darker_numeric_up_down.value());
+  auto dark_color = drawing::color::dark(color, darker_numeric_up_down.value());
   darker_panel.back_color(dark_color);
   darker_value_label.text(ustring::format("0x{:X8}", dark_color.to_argb()));
   
-  drawing::color light_color = drawing::color::light(color, lighter_numeric_up_down.value());
+  auto light_color = drawing::color::light(color, lighter_numeric_up_down.value());
   lighter_panel.back_color(light_color);
   lighter_value_label.text(ustring::format("0x{:X8}", light_color.to_argb()));
 }
