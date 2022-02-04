@@ -2,7 +2,7 @@
 
 **The xtd_tools project is a collection of tools to help xtd development.**
 
-[![logo](https://github.com/gammasoft71/xtd_tools/blob/master/docs/pictures/logo.png)](https://gammasoft71.wixsite.com/xtdpro)
+[![logo](https://github.com/gammasoft71/xtd_tools/blob/main/docs/pictures/logo.png)](https://gammasoft71.wixsite.com/xtdpro)
 
 [![License](https://img.shields.io/github/license/gammasoft71/xtd)](https://github.com/gammasoft71/xtd_tools/blob/master/docs/license.md) [![Language](https://img.shields.io/badge/language-C++17/20-004080.svg)](https://github.com/gammasoft71/xtd/blob/master/docs/portability.md#c++17) [![web](https://img.shields.io/badge/website-xtd-004080.svg)](https://gammasoft71.wixsite.com/xtdpro) [![discord](https://img.shields.io/badge/discord-gammasoft-7289DA.svg)](https://discordapp.com/users/gammasoft#9288)
  
