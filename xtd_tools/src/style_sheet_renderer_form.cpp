@@ -22,7 +22,6 @@ style_sheet_renderer_form::style_sheet_renderer_form() {
     style_sheet_rendered_button.invalidate();
     style_sheet_rendered_button.refresh();
   };
-
   
   style_sheet_text_box.location({10, 40});
   style_sheet_text_box.size({650, 355});
@@ -48,7 +47,6 @@ style_sheet_renderer_form::style_sheet_renderer_form() {
     "  }\n"
   );
 
-  
   style_heet_panel.location({670, 10});
   style_heet_panel.border_style(forms::border_style::solid);
   style_heet_panel.size({320, 385});
