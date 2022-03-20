@@ -35,14 +35,14 @@ style_sheet_renderer_form::style_sheet_renderer_form() {
     "  border-color: red;\n"
     "  border-width: 1px;\n"
     "  border-radius: 5px 0px 5px 0px;\n"
-    "  background-image: linear-gradient(rgba(255, 0, 0, 48), rgba(255, 0, 0, 96));\n"
+    "  background-image: linear-gradient(rgba(255, 0, 0, 0.188), rgba(255, 0, 0, 0.376));\n"
     "  padding: 1px 1px 3px 1px;\n"
     "  color: red;\n"
     "}\n"
     "\n"
     "button:pressed {\n"
     "  border-style: inset;\n"
-    "  background-image: linear-gradient(rgba(255, 0, 0, 64), rgba(255, 0, 0, 128));\n"
+    "  background-image: linear-gradient(rgba(255, 0, 0, 0.251), rgba(255, 0, 0, 0.5));\n"
     "  color: #FF5555;\n"
     "  }\n"
   );
@@ -66,7 +66,7 @@ style_sheet_renderer_form::style_sheet_renderer_form() {
   width_numeric_up_down.value(style_sheet_rendered_button.width());
   width_numeric_up_down.maximum(10000);
   width_numeric_up_down.anchor(anchor_styles::left | anchor_styles::bottom);
-  width_numeric_up_down.value_changed += [&]{
+  width_numeric_up_down.value_changed += [&] {
     style_sheet_rendered_button.width(width_numeric_up_down.value());
   };
   
@@ -75,7 +75,7 @@ style_sheet_renderer_form::style_sheet_renderer_form() {
   height_numeric_up_down.value(style_sheet_rendered_button.height());
   height_numeric_up_down.maximum(10000);
   height_numeric_up_down.anchor(anchor_styles::left | anchor_styles::bottom);
-  height_numeric_up_down.value_changed += [&]{
+  height_numeric_up_down.value_changed += [&] {
     style_sheet_rendered_button.height(height_numeric_up_down.value());
   };
 
