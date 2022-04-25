@@ -8,6 +8,8 @@ add_sources(
   src/main_form.cpp
   src/color_converter_form.h
   src/color_converter_form.cpp
+  src/release_note_generator_form.h
+  src/release_note_generator_form.cpp
   src/style_sheet_renderer_form.h
   src/style_sheet_renderer_form.cpp
 )

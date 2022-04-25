@@ -14,10 +14,11 @@ main_form::main_form() {
   
   tools_list_box.parent(*this);
   tools_list_box.dock(dock_style::fill);
-  tools_list_box.items({"Color converter", "Style sheet renderer", });
+  tools_list_box.items({"Color converter", "Release note generator", "Style sheet renderer", });
   
   tools_list_box.double_click += [&] {
     if (tools_list_box.selected_item().value() == "Color converter") creates_form<color_converter_form>();
+    if (tools_list_box.selected_item().value() == "Release note generator") creates_form<release_note_generator_form>();
     if (tools_list_box.selected_item().value() == "Style sheet renderer") creates_form<style_sheet_renderer_form>();
   };
 }
