@@ -64,6 +64,7 @@ release_note_generator_form::release_note_generator_form() {
 
 xtd::ustring release_note_generator_form::generate_release_note(const xtd::ustring& project_path, const xtd::ustring& state, const xtd::ustring& milestone) {
   auto repository = get_repository(project_path);
+  if (repository == "") return "";
   process generate_process;
   process_start_info psi;
   generate_process.start_info().use_shell_execute(false);
@@ -78,7 +79,7 @@ xtd::ustring release_note_generator_form::generate_release_note(const xtd::ustri
   application::do_events();
   try {
     generate_process.start();
-  } catch (const xtd::system_exception& e) {
+  } catch (const xtd::system_exception&) {
     message_box::show(*this, "The generation process failed. Check that you have installed Github CLI.\nSee https://cli.github.com for more information", "Generation error", message_box_buttons::ok, message_box_icon::error);
     return "";
   }
@@ -121,7 +122,7 @@ xtd::ustring release_note_generator_form::get_repository(const xtd::ustring& pro
   application::do_events();
   try {
     get_repository_process.start();
-  } catch (const xtd::system_exception& e) {
+  } catch (const xtd::system_exception&) {
     message_box::show(*this, "The generation process failed. Check that you have installed Github CLI.\nSee https://cli.github.com for more information", "Generation error", message_box_buttons::ok, message_box_icon::error);
     return "";
   }
