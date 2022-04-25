@@ -76,15 +76,17 @@ xtd::ustring release_note_generator_form::generate_release_note(const xtd::ustri
   generate_process.start_info().working_directory(project_path);
   generate_process.start_info().redirect_standard_output(true);
   application::do_events();
-  if (!generate_process.start()) {
-    message_box::show(*this, "The generation process failed. Be sure you have installed Github CLI.", "Generation error", message_box_buttons::ok, message_box_icon::error);
+  try {
+    generate_process.start();
+  } catch (const xtd::system_exception& e) {
+    message_box::show(*this, "The generation process failed. Check that you have installed Github CLI.\nSee https://cli.github.com for more information", "Generation error", message_box_buttons::ok, message_box_icon::error);
     return "";
   }
   application::do_events();
   std::istream& standard_output = generate_process.standard_output();
   
   ustring result;
-    stream_reader reader(standard_output);
+  stream_reader reader(standard_output);
   while (!reader.end_of_stream()) {
     auto line = reader.read_line();
     //xtd::diagnostics::debug::write_line(line);
@@ -104,22 +106,24 @@ xtd::ustring release_note_generator_form::generate_release_note(const xtd::ustri
 }
 
 xtd::ustring release_note_generator_form::get_repository(const xtd::ustring& project_path) {
-  process generate_process;
+  process get_repository_process;
   process_start_info psi;
-  generate_process.start_info().use_shell_execute(false);
-  generate_process.start_info().file_name("gh");
+  get_repository_process.start_info().use_shell_execute(false);
+  get_repository_process.start_info().file_name("gh");
   
   ustring arguments = "repo view";
-  generate_process.start_info().arguments(arguments);
-  generate_process.start_info().working_directory(project_path);
-  generate_process.start_info().redirect_standard_output(true);
+  get_repository_process.start_info().arguments(arguments);
+  get_repository_process.start_info().working_directory(project_path);
+  get_repository_process.start_info().redirect_standard_output(true);
   application::do_events();
-  if (!generate_process.start()) {
-    message_box::show(*this, "The generation process failed. Be sure you have installed Github CLI.", "Generation error", message_box_buttons::ok, message_box_icon::error);
+  try {
+    get_repository_process.start();
+  } catch (const xtd::system_exception& e) {
+    message_box::show(*this, "The generation process failed. Check that you have installed Github CLI.\nSee https://cli.github.com for more information", "Generation error", message_box_buttons::ok, message_box_icon::error);
     return "";
   }
   application::do_events();
-  std::istream& standard_output = generate_process.standard_output();
+  std::istream& standard_output = get_repository_process.standard_output();
   
   stream_reader reader(standard_output);
   application::do_events();
