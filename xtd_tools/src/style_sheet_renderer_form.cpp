@@ -67,7 +67,7 @@ style_sheet_renderer_form::style_sheet_renderer_form() {
   width_numeric_up_down.maximum(10000);
   width_numeric_up_down.anchor(anchor_styles::left | anchor_styles::bottom);
   width_numeric_up_down.value_changed += [&] {
-    style_sheet_rendered_button.width(width_numeric_up_down.value());
+    style_sheet_rendered_button.width(as<int>(width_numeric_up_down.value()));
   };
   
   height_numeric_up_down.location({210, 235});
@@ -76,7 +76,7 @@ style_sheet_renderer_form::style_sheet_renderer_form() {
   height_numeric_up_down.maximum(10000);
   height_numeric_up_down.anchor(anchor_styles::left | anchor_styles::bottom);
   height_numeric_up_down.value_changed += [&] {
-    style_sheet_rendered_button.height(height_numeric_up_down.value());
+    style_sheet_rendered_button.height(as<int>(height_numeric_up_down.value()));
   };
 
   text_label.location({10, 265});
