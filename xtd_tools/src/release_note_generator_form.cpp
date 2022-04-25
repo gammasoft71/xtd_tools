@@ -83,9 +83,8 @@ xtd::ustring release_note_generator_form::generate_release_note(const xtd::ustri
   application::do_events();
   std::istream& standard_output = generate_process.standard_output();
   
-  ustring result = "## List\n\n";
-  
-  stream_reader reader(standard_output);
+  ustring result;
+    stream_reader reader(standard_output);
   while (!reader.end_of_stream()) {
     auto line = reader.read_line();
     //xtd::diagnostics::debug::write_line(line);
