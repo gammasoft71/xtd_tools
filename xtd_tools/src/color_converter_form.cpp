@@ -1,5 +1,4 @@
 #include "color_converter_form.h"
-#include "../properties/resources.h"
 
 using namespace xtd;
 using namespace xtd::drawing;
@@ -9,10 +8,10 @@ using namespace xtd_tools;
 color_converter_form::color_converter_form() {
   text("Color converter");
   client_size({470, 130});
-  icon(properties::resources::xtd_tools_ico());
+  form_border_style(xtd::forms::form_border_style::fixed_dialog);
   maximize_box(false);
-  minimum_client_size(client_size());
-  maximum_client_size(client_size());
+  minimize_box(false);
+  show_icon(false);
   controls().push_back_range({color_label, color_text_box, color_panel, color_value_label, darker_label, darker_numeric_up_down, darker_panel, darker_value_label, lighter_label, lighter_numeric_up_down, lighter_panel, lighter_value_label});
   
   color_text_box.text_changed += {*this, &color_converter_form::update_colors};

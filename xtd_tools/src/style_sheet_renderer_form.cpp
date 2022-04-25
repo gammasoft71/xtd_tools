@@ -1,5 +1,4 @@
 #include "style_sheet_renderer_form.h"
-#include "../properties/resources.h"
 
 using namespace xtd;
 using namespace xtd::drawing;
@@ -9,9 +8,9 @@ using namespace xtd_tools;
 style_sheet_renderer_form::style_sheet_renderer_form() {
   text("Style sheet renderer");
   client_size({1000, 400});
-  icon(properties::resources::xtd_tools_ico());
+  minimize_box(false);
+  show_icon(false);
   minimum_client_size({800, 200});
-  maximize_box(false);
   controls().push_back_range({style_sheet_text_box, run_button, style_heet_panel});
   
   run_button.location({10, 10});
