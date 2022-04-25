@@ -9,6 +9,7 @@ using namespace xtd_tools;
 main_form::main_form() {
   text("xtd tools");
   client_size({300, 400});
+  icon(properties::resources::xtd_tools_ico());
   padding(10);
   menu(main_menu);
   

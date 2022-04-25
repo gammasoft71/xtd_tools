@@ -1,4 +1,5 @@
 #include "color_converter_form.h"
+#include "../properties/resources.h"
 
 using namespace xtd;
 using namespace xtd::drawing;
@@ -8,6 +9,7 @@ using namespace xtd_tools;
 color_converter_form::color_converter_form() {
   text("Color converter");
   client_size({470, 130});
+  icon(properties::resources::xtd_tools_ico());
   maximize_box(false);
   minimum_client_size(client_size());
   maximum_client_size(client_size());

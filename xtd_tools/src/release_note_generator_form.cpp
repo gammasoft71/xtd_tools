@@ -1,4 +1,5 @@
 #include "release_note_generator_form.h"
+#include "../properties/resources.h"
 
 using namespace xtd;
 using namespace xtd::diagnostics;
@@ -10,6 +11,7 @@ release_note_generator_form::release_note_generator_form() {
   text("Release note generator");
   client_size({1000, 600});
   controls().push_back_range({release_note_text_box, controls_panel});
+  icon(properties::resources::xtd_tools_ico());
   padding(10);
   
   controls_panel.controls().push_back_range({project_path_label, project_path_text_box, state_label, state_choice, milestone_label, milestone_text_box, generate_button});
@@ -65,6 +67,7 @@ release_note_generator_form::release_note_generator_form() {
 xtd::ustring release_note_generator_form::generate_release_note(const xtd::ustring& project_path, const xtd::ustring& state, const xtd::ustring& milestone) {
   auto repository = get_repository(project_path);
   if (repository == "") return "";
+
   process generate_process;
   process_start_info psi;
   generate_process.start_info().use_shell_execute(false);
