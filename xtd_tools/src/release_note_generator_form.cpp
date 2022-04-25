@@ -8,7 +8,7 @@ using namespace xtd_tools;
 
 release_note_generator_form::release_note_generator_form() {
   text("Release note generator");
-  client_size({640, 480});
+  client_size({1000, 600});
   controls().push_back_range({release_note_text_box, controls_panel});
   padding(10);
   
@@ -23,7 +23,7 @@ release_note_generator_form::release_note_generator_form() {
   
   project_path_text_box.text(path::combine(environment::get_folder_path(environment::special_folder::home), "Projects", "xtd"));
   project_path_text_box.location({90, 10});
-  project_path_text_box.width(520);
+  project_path_text_box.width(880);
   project_path_text_box.anchor(anchor_styles::left | anchor_styles::top |anchor_styles::right);
   
   state_label.text("State");
@@ -33,7 +33,7 @@ release_note_generator_form::release_note_generator_form() {
   state_choice.items().push_back_range({"closed", "open", "all"});
   state_choice.selected_index(0);
   state_choice.location({90, 40});
-  state_choice.width(520);
+  state_choice.width(880);
   state_choice.anchor(anchor_styles::left | anchor_styles::top |anchor_styles::right);
   
   milestone_label.text("Milestone");
@@ -42,7 +42,7 @@ release_note_generator_form::release_note_generator_form() {
   
   milestone_text_box.text(environment::version().to_string());
   milestone_text_box.location({90, 70});
-  milestone_text_box.width(520);
+  milestone_text_box.width(880);
   milestone_text_box.anchor(anchor_styles::left | anchor_styles::top |anchor_styles::right);
 
   generate_button.click += [&]{
