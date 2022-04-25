@@ -63,7 +63,7 @@ release_note_generator_form::release_note_generator_form() {
 }
 
 xtd::ustring release_note_generator_form::generate_release_note(const xtd::ustring& project_path, const xtd::ustring& state, const xtd::ustring& milestone) {
-  auto repository = "https://github.com/" + get_repository(project_path);
+  auto repository = get_repository(project_path);
   process generate_process;
   process_start_info psi;
   generate_process.start_info().use_shell_execute(false);
@@ -97,7 +97,7 @@ xtd::ustring release_note_generator_form::generate_release_note(const xtd::ustri
       status = "added"_s;
     else if (items[1] == "CLOSED" && !items[3].contains("enhancement"))
       status = "fixed"_s;
-    result += ustring::format("* ![{0}]({1}/blob/master/docs/pictures/releases/status/{0}.png) {3} - [#{2}]({1}/issues/{2}){4}", status, repository, items[0], items[2], environment::new_line());
+    result += ustring::format("* ![{0}](https://github.com/{1}/blob/master/docs/pictures/releases/status/{0}.png) {3} - [#{2}](https://github.com/{1}/issues/{2}){4}", status, repository, items[0], items[2], environment::new_line());
     application::do_events();
   }
 
@@ -106,6 +106,9 @@ xtd::ustring release_note_generator_form::generate_release_note(const xtd::ustri
 }
 
 xtd::ustring release_note_generator_form::get_repository(const xtd::ustring& project_path) {
+  static ustring repository;
+  if (repository != "") return repository;
+  
   process get_repository_process;
   process_start_info psi;
   get_repository_process.start_info().use_shell_execute(false);
@@ -127,5 +130,10 @@ xtd::ustring release_note_generator_form::get_repository(const xtd::ustring& pro
   
   stream_reader reader(standard_output);
   application::do_events();
-  return reader.read_line().replace("name:\t", "");
+  repository = reader.read_line().replace("name:\t", "");
+  while (!reader.end_of_stream()) {
+    application::do_events();
+    reader.read_line();
+  }
+  return repository;
 }
