@@ -8,7 +8,7 @@ namespace xtd_tools {
   /// @brief Represents the style_sheet_renderer_form form.
   class style_sheet_renderer_form final : public xtd::forms::form {
   public:
-    /// @brief Initializes a new instance of the form1 class.
+    /// @brief Initializes a new instance of the style_sheet_renderer_form form.
     style_sheet_renderer_form();
     
   private:
