@@ -28,6 +28,7 @@ namespace xtd_tools {
     }
 
     void on_child_form_closed(xtd::object& sender, const xtd::forms::form_closed_event_args& e);
+    void on_count_examples_double_click();
     void on_help_about_menu_item_click(xtd::object& sender, const xtd::event_args& e);
     void on_help_xtd_reference_guide_item_click(xtd::object& sender, const xtd::event_args& e);
 
