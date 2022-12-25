@@ -18,7 +18,6 @@ namespace xtd_tools {
     void on_browse_click();
     void on_form_closed(const xtd::forms::form_closed_event_args& e) override;
     void on_path_text_changed();
-    void on_visible_changed(const xtd::event_args& e) override;
     void update_colors() noexcept;
     xtd::forms::button browse_button;
     xtd::forms::text_box path_text_box;

@@ -7,39 +7,42 @@ using namespace xtd::io;
 using namespace xtd_tools;
 
 sources_statistics_form::sources_statistics_form() {
+  if (!is_cloc_process_exist())
+    message_box::show("cloc is not present. Please install cloc.\nSee https://github.com/AlDanial/cloc for more information.");
+  
   text("Sources statistics");
   controls().push_back_range({browse_button, path_text_box, format_choice, analyse_button, result_tab_control});
   client_size({800, 600});
-
+  
   browse_button.text("Browse");
   browse_button.bounds({10, 10, 100, 25});
   browse_button.click += {*this, &sources_statistics_form::on_browse_click};
-
+  
   path_text_box.placeholder_text("xtd sources path");
   path_text_box.bounds({120, 10, 450, 25});
   path_text_box.anchor(anchor_styles::left | anchor_styles::top | anchor_styles::right);
   path_text_box.text(properties::settings().xtd_sources_path());
   path_text_box.text_changed += {*this, &sources_statistics_form::on_path_text_changed};
-
+  
   format_choice.items().push_back_range({{"Standard", " "}, {"CSV", "--csv"}, {"Json", "--json"}, {"Markdown", "--md"}, {"XML", "--xml"}, {"YAML", "--yaml"}});
   format_choice.bounds({580, 10, 100, 25});
   format_choice.anchor(anchor_styles::top | anchor_styles::right);
   format_choice.selected_index(0);
-
+  
   analyse_button.text("Analyse");
   analyse_button.bounds({690, 10, 100, 25});
   analyse_button.anchor(anchor_styles::top | anchor_styles::right);
-  analyse_button.enabled(!path_text_box.text().empty() && io::directory::exists(path_text_box.text()));
+  analyse_button.enabled(is_cloc_process_exist() && !path_text_box.text().empty() && io::directory::exists(path_text_box.text()));
   analyse_button.click += {*this, &sources_statistics_form::on_analyse_click};
-
+  
   result_tab_control.bounds({10, 45, 780, 545});
   result_tab_control.anchor(anchor_styles::left | anchor_styles::top | anchor_styles::right | anchor_styles::bottom);
   result_tab_control.controls().push_back_range({sources_result_tab_page, tests_result_tab_page, examples_result_tab_page});
-
+  
   sources_result_tab_page.text("Sources");
   tests_result_tab_page.text("Tests");
   examples_result_tab_page.text("Examples");
-
+  
   sources_result_text_box.parent(sources_result_tab_page);
   sources_result_text_box.accepts_return(true);
   sources_result_text_box.accepts_tab(true);
@@ -47,7 +50,7 @@ sources_statistics_form::sources_statistics_form() {
   sources_result_text_box.multiline(true);
   sources_result_text_box.read_only(true);
   sources_result_text_box.font({drawing::font_family::generic_monospace(), sources_result_text_box.font().size()});
-
+  
   tests_result_text_box.parent(tests_result_tab_page);
   tests_result_text_box.accepts_return(true);
   tests_result_text_box.accepts_tab(true);
@@ -55,7 +58,7 @@ sources_statistics_form::sources_statistics_form() {
   tests_result_text_box.multiline(true);
   tests_result_text_box.read_only(true);
   tests_result_text_box.font({drawing::font_family::generic_monospace(), tests_result_text_box.font().size()});
-
+  
   examples_result_text_box.parent(examples_result_tab_page);
   examples_result_text_box.accepts_return(true);
   examples_result_text_box.accepts_tab(true);
@@ -120,16 +123,5 @@ void sources_statistics_form::on_form_closed(const xtd::forms::form_closed_event
 }
 
 void sources_statistics_form::on_path_text_changed() {
-  analyse_button.enabled(!path_text_box.text().empty() && directory::exists(path_text_box.text()));
-}
-
-void sources_statistics_form::on_visible_changed(const xtd::event_args& e) {
-  form::on_visible_changed(e);
-  if (visible()) {
-    if (!is_cloc_process_exist()) {
-      message_box::show(*this, "cloc is not present. Please install cloc.\nSee https://github.com/AlDanial/cloc for more information.");
-      close();
-    }
-
-  }
+  analyse_button.enabled(is_cloc_process_exist() && !path_text_box.text().empty() && directory::exists(path_text_box.text()));
 }
