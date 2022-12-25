@@ -37,11 +37,20 @@ sources_statistics_form::sources_statistics_form() {
   
   result_tab_control.bounds({10, 45, 780, 545});
   result_tab_control.anchor(anchor_styles::left | anchor_styles::top | anchor_styles::right | anchor_styles::bottom);
-  result_tab_control.controls().push_back_range({sources_result_tab_page, tests_result_tab_page, examples_result_tab_page});
+  result_tab_control.controls().push_back_range({all_result_tab_page, sources_result_tab_page, tests_result_tab_page, examples_result_tab_page});
   
+  all_result_tab_page.text("All");
   sources_result_tab_page.text("Sources");
   tests_result_tab_page.text("Tests");
   examples_result_tab_page.text("Examples");
+  
+  all_result_text_box.parent(all_result_tab_page);
+  all_result_text_box.accepts_return(true);
+  all_result_text_box.accepts_tab(true);
+  all_result_text_box.dock(dock_style::fill);
+  all_result_text_box.multiline(true);
+  all_result_text_box.read_only(true);
+  all_result_text_box.font({drawing::font_family::generic_monospace(), sources_result_text_box.font().size()});
   
   sources_result_text_box.parent(sources_result_tab_page);
   sources_result_text_box.accepts_return(true);
@@ -50,7 +59,7 @@ sources_statistics_form::sources_statistics_form() {
   sources_result_text_box.multiline(true);
   sources_result_text_box.read_only(true);
   sources_result_text_box.font({drawing::font_family::generic_monospace(), sources_result_text_box.font().size()});
-  
+
   tests_result_text_box.parent(tests_result_tab_page);
   tests_result_text_box.accepts_return(true);
   tests_result_text_box.accepts_tab(true);
@@ -69,7 +78,7 @@ sources_statistics_form::sources_statistics_form() {
 }
 
 xtd::ustring sources_statistics_form::analyse_path(const ustring& path, const ustring& output_format) {
-  diagnostics::process_start_info psi {"cloc", ustring::format("--hide-rate --quiet {} {}", output_format, path)};
+  diagnostics::process_start_info psi {"cloc", ustring::format("--hide-rate --quiet --exclude-dir=build {} {}", output_format, path)};
   psi.use_shell_execute(false);
   psi.create_no_window(true);
   psi.redirect_standard_output(true);
@@ -93,15 +102,18 @@ bool sources_statistics_form::is_cloc_process_exist() {
 void sources_statistics_form::on_analyse_click() {
   auto output_format = as<ustring>(format_choice.selected_item().tag());
   progress_dialog dialog;
-  dialog.maximum(3);
+  dialog.maximum(4);
   dialog.show(*this);
   dialog.value(1);
   application::do_events();
-  if (directory::exists(path::combine(path_text_box.text(), "src"))) sources_result_text_box.text(analyse_path(path::combine(path_text_box.text(), "src"), output_format));
+  if (directory::exists(path_text_box.text())) all_result_text_box.text(analyse_path(path_text_box.text(), output_format));
   dialog.value(2);
   application::do_events();
-  if (directory::exists(path::combine(path_text_box.text(), "tests"))) tests_result_text_box.text(analyse_path(path::combine(path_text_box.text(), "tests"), output_format));
+  if (directory::exists(path::combine(path_text_box.text(), "src"))) sources_result_text_box.text(analyse_path(path::combine(path_text_box.text(), "src"), output_format));
   dialog.value(3);
+  application::do_events();
+  if (directory::exists(path::combine(path_text_box.text(), "tests"))) tests_result_text_box.text(analyse_path(path::combine(path_text_box.text(), "tests"), output_format));
+  dialog.value(4);
   application::do_events();
   if (directory::exists(path::combine(path_text_box.text(), "examples"))) examples_result_text_box.text(analyse_path(path::combine(path_text_box.text(), "examples"), output_format));
   application::do_events();
