@@ -16,12 +16,13 @@ main_form::main_form() {
   
   tools_list_box.parent(*this);
   tools_list_box.dock(dock_style::fill);
-  tools_list_box.items({"Color converter", "Count examples", "Release note generator", "Style sheet renderer", });
+  tools_list_box.items({"Color converter", "Count examples", "Release note generator", "Sources statistics", "Style sheet renderer", });
   
   tools_list_box.double_click += [&] {
     if (tools_list_box.selected_item().value() == "Color converter") creates_form<color_converter_form>();
     else if (tools_list_box.selected_item().value() == "Count examples") on_count_examples_double_click();
     else if (tools_list_box.selected_item().value() == "Release note generator") creates_form<release_note_generator_form>();
+    else if (tools_list_box.selected_item().value() == "Sources statistics") creates_form<sources_statistics_form>();
     else if (tools_list_box.selected_item().value() == "Style sheet renderer") creates_form<style_sheet_renderer_form>();
   };
 }
