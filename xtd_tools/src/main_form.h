@@ -37,11 +37,13 @@ namespace xtd_tools {
     std::vector<std::shared_ptr<xtd::forms::form>> childs;
 
     xtd::forms::menu_item tools_color_converter_menu_item {"&Color converter", {*this, &main_form::creates_form<color_converter_form>}};
+    xtd::forms::menu_item tools_count_example_menu_item {"Count &examples", {*this, &main_form::on_count_examples_double_click}};
     xtd::forms::menu_item tools_release_note_generator_menu_item {"&Release note generator", {*this, &main_form::creates_form<release_note_generator_form>}};
-    xtd::forms::menu_item tools_style_sheet_renderer_menu_item {"&Style sheet renderer", {*this, &main_form::creates_form<style_sheet_renderer_form>}};
+    xtd::forms::menu_item tools_sources_statistics_menu_item {"&Sources statistics", {*this, &main_form::creates_form<sources_statistics_form>}};
+    xtd::forms::menu_item tools_style_sheet_renderer_menu_item {"S&tyle sheet renderer", {*this, &main_form::creates_form<style_sheet_renderer_form>}};
     xtd::forms::menu_item tools_separator_menu_item {"-"};
     xtd::forms::menu_item tools_exit_menu_item {xtd::forms::system_texts::exit(), overload_<>(&xtd::forms::application::exit), xtd::forms::shortcut::alt_f4};
-    xtd::forms::menu_item tools_menu_item {"&Tools", {tools_color_converter_menu_item, tools_release_note_generator_menu_item, tools_style_sheet_renderer_menu_item, tools_separator_menu_item, tools_exit_menu_item}};
+    xtd::forms::menu_item tools_menu_item {"&Tools", {tools_color_converter_menu_item, tools_count_example_menu_item, tools_release_note_generator_menu_item, tools_sources_statistics_menu_item, tools_style_sheet_renderer_menu_item, tools_separator_menu_item, tools_exit_menu_item}};
 
     xtd::forms::menu_item help_xtd_reference_guide_item {"&xtd reference guide", {*this, &main_form::on_help_xtd_reference_guide_item_click}};
     xtd::forms::menu_item help_separator_menu_item {"-"};
