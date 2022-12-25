@@ -88,15 +88,18 @@ xtd::ustring sources_statistics_form::analyse_path(const ustring& path, const us
 }
 
 bool sources_statistics_form::is_cloc_process_exist() {
+  static bool found = false;
+  if (found) return true;
   try {
     diagnostics::process_start_info psi {"cloc", "--version"};
     psi.use_shell_execute(false);
     psi.create_no_window(true);
     diagnostics::process::start(psi);
+    found = true;
   } catch(...) {
-    return false;
+    return found;
   }
-  return true;
+  return found;
 }
 
 void sources_statistics_form::on_analyse_click() {
