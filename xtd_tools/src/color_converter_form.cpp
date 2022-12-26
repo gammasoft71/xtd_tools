@@ -12,9 +12,9 @@ color_converter_form::color_converter_form() {
   maximize_box(false);
   minimize_box(false);
   show_icon(false);
-  controls().push_back_range({color_label, color_text_box, color_panel, color_value_label, darker_label, darker_numeric_up_down, darker_panel, darker_value_label, lighter_label, lighter_numeric_up_down, lighter_panel, lighter_value_label});
+  controls().push_back_range({color_label, color_combo_box, color_panel, color_value_label, darker_label, darker_numeric_up_down, darker_panel, darker_value_label, lighter_label, lighter_numeric_up_down, lighter_panel, lighter_value_label});
   
-  color_text_box.text_changed += {*this, &color_converter_form::update_colors};
+  color_combo_box.text_changed += {*this, &color_converter_form::update_colors};
   darker_numeric_up_down.value_changed += {*this, &color_converter_form::update_colors};
   lighter_numeric_up_down.value_changed += {*this, &color_converter_form::update_colors};
 
@@ -22,9 +22,13 @@ color_converter_form::color_converter_form() {
   color_label.auto_size(true);
   color_label.text("color");
   
-  color_text_box.location({60, 11});
-  color_text_box.width(150);
-  color_text_box.text("control");
+  color_combo_box.location({60, 11});
+  color_combo_box.width(150);
+  for (auto color : system_colors::get_system_colors())
+    color_combo_box.items().push_back(color.name());
+  for (auto color : colors::get_colors())
+    color_combo_box.items().push_back(color.name());
+  color_combo_box.selected_item("control");
   
   color_panel.location({220, 10});
   color_panel.border_style(forms::border_style::inset);
@@ -71,7 +75,7 @@ color_converter_form::color_converter_form() {
 }
 
 void color_converter_form::update_colors() noexcept {
-  auto color = drawing::color::parse(color_text_box.text());
+  auto color = drawing::color::parse(color_combo_box.text());
   color_panel.back_color(color);
   color_value_label.text(ustring::format("0x{:X8}", color.to_argb()));
   

@@ -14,7 +14,7 @@ namespace xtd_tools {
   private:
     void update_colors() noexcept;
     xtd::forms::label color_label;
-    xtd::forms::text_box color_text_box;
+    xtd::forms::combo_box color_combo_box;
     xtd::forms::panel color_panel;
     xtd::forms::label color_value_label;
 
