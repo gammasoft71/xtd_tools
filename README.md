@@ -23,7 +23,7 @@
 
 ## xtd
 
-This project is entirely written with the [xtd](https://github.com/gammasoft71/xtd) framework.
+This project is entirely written with the [xtd](https://gammasoft71.wixsite.com/xtdpro) framework.
 
 For more information about xtd see :
 * [website](https://gammasoft71.wixsite.com/xtdpro)
