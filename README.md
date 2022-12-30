@@ -1,6 +1,6 @@
 # xtd_tools
 
-**The xtd_tools project is a collection of tools to help xtd development. This project works on Windows, macOS and Linux platforms.**
+**The xtd_tools project is a collection of tools to help [xtd](https://gammasoft71.wixsite.com/xtdpro) development. This project works on Windows, macOS and Linux platforms.**
 
 [![logo](https://github.com/gammasoft71/xtd_tools/blob/main/docs/pictures/logo.png)](https://gammasoft71.wixsite.com/xtdpro)
 
