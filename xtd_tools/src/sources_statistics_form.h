@@ -1,5 +1,5 @@
 /// @file
-/// @brief Contains color_converter_form class.
+/// @brief Contains sources_statistics_form class.
 #pragma once
 #include <xtd/xtd.forms>
 

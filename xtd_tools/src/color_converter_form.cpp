@@ -24,10 +24,8 @@ color_converter_form::color_converter_form() {
   
   color_combo_box.location({60, 11});
   color_combo_box.width(150);
-  for (auto color : system_colors::get_system_colors())
-    color_combo_box.items().push_back(color.name());
-  for (auto color : colors::get_colors())
-    color_combo_box.items().push_back(color.name());
+  color_combo_box.items().push_back_range(colors::get_color_names());
+  color_combo_box.items().push_back_range(system_colors::get_color_names());
   color_combo_box.selected_item("control");
   
   color_panel.location({220, 10});

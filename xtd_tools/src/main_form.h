@@ -5,6 +5,7 @@
 #include <memory>
 #include <xtd/xtd.forms>
 #include "color_converter_form.h"
+#include "doxygen_example_generator_form.h"
 #include "release_note_generator_form.h"
 #include "sources_statistics_form.h"
 #include "style_sheet_renderer_form.h"

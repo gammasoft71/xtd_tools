@@ -8,9 +8,18 @@
  
 ## Features
 
-* color converter : Helps to convert a specific color from its name or hexadecimal value into corresponding dark and light colors;
+* Color converter : Helps to convert a specific color from its name or hexadecimal value into corresponding dark and light colors;
+* Count examples : Gets the number of examples of xtd;
+* Doxygen examples generator : Generates the list of examples for the Doxygen documentation.
+* Release note generator : Generates the release note of xtd.
+* Sources statistics : Gets the statistics of sources of xtd.
 * Style sheet renderer : Helps to write style sheet with wysiwyg;
 * more tools will be available soon...
+
+## Screenshot
+
+![screenshot](https://github.com/gammasoft71/xtd_tools/blob/main/docs/pictures/xtd_tools_m.png))
+![screenshot](https://github.com/gammasoft71/xtd_tools/blob/main/docs/pictures/xtd_tools_md.png))
 
 ## xtd
 
