@@ -78,7 +78,7 @@ sources_statistics_form::sources_statistics_form() {
 }
 
 xtd::ustring sources_statistics_form::analyse_path(const ustring& path, const ustring& output_format) {
-  diagnostics::process_start_info psi {"cloc", ustring::format("--hide-rate --quiet --exclude-dir=build {} {}", output_format, path)};
+  diagnostics::process_start_info psi {"cloc", ustring::format("--hide-rate --quiet --exclude-dir=build,reference_guide,resources {} {}", output_format, path)};
   psi.use_shell_execute(false);
   psi.create_no_window(true);
   psi.redirect_standard_output(true);
