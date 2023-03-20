@@ -37,7 +37,7 @@ sources_statistics_form::sources_statistics_form() {
   
   result_tab_control.bounds({10, 45, 780, 545});
   result_tab_control.anchor(anchor_styles::left | anchor_styles::top | anchor_styles::right | anchor_styles::bottom);
-  result_tab_control.controls().push_back_range({all_result_tab_page, sources_result_tab_page, tests_result_tab_page, examples_result_tab_page});
+  result_tab_control.tab_pages().push_back_range({all_result_tab_page, sources_result_tab_page, tests_result_tab_page, examples_result_tab_page});
   
   all_result_tab_page.text("All");
   sources_result_tab_page.text("Sources");
