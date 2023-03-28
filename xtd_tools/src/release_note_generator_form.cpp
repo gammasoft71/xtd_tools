@@ -101,7 +101,8 @@ xtd::ustring release_note_generator_form::generate_release_note(const xtd::ustri
       status = "added"_s;
     else if (items[1] == "CLOSED" && !items[3].contains("enhancement"))
       status = "fixed"_s;
-    result += ustring::format("* ![{0}](https://github.com/{1}/blob/master/docs/pictures/releases/status/{0}.png) {3} - [#{2}](https://github.com/{1}/issues/{2}){4}", status, repository, items[0], items[2], environment::new_line());
+    items[2] = items[2].replace("[BUG] ", "").replace("[ENHANCEMENT] ", "").replace("[QUESTION] ", "");
+    result += ustring::format("* ![{0}](/pictures/releases/status/{0}.png) {3} - [#{2}](https://github.com/{1}/issues/{2}){4}", status, repository, items[0], items[2], environment::new_line());
     application::do_events();
   }
 
