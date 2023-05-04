@@ -4,7 +4,7 @@
 
 [![logo](https://github.com/gammasoft71/xtd_tools/blob/main/docs/pictures/logo.png)](https://gammasoft71.github.io/xtd/)
 
-[![License](https://img.shields.io/github/license/gammasoft71/xtd)](https://github.com/gammasoft71/xtd_tools/blob/master/docs/license.md) [![Language](https://img.shields.io/badge/language-C++17/20-004080.svg)](https://github.com/gammasoft71/xtd/blob/master/docs/portability.md#c++17) [![web](https://img.shields.io/badge/website-xtd-004080.svg)](https://gammasoft71.github.io/xtd/) [![discord](https://img.shields.io/badge/discord-gammasoft-7289DA.svg)](https://discordapp.com/users/gammasoft#9288)
+[![License](https://img.shields.io/github/license/gammasoft71/xtd)](https://gammasoft71.github.io/xtd/docs/documentation/license) [![Language](https://img.shields.io/badge/language-C++17/20-004080.svg)](https://gammasoft71.github.io/xtd/docs/documentation/portability#c++17) [![web](https://img.shields.io/badge/website-xtd-004080.svg)](https://gammasoft71.github.io/xtd/) [![discord](https://img.shields.io/badge/discord-gammasoft-7289DA.svg)](https://discordapp.com/users/gammasoft#9288)
  
 ## Features
 
@@ -28,7 +28,7 @@ This project is entirely written with the [xtd](https://gammasoft71.github.io/xt
 
 For more information about xtd see :
 * [website](https://gammasoft71.github.io/xtd/)
-* [wiki](https://github.com/gammasoft71/xtd/blob/master/docs/home.md)
+* [wiki](https://github.com/gammasoft71/xtd/wiki)
 * [github](https://github.com/gammasoft71/xtd) 
 * [project](https://sourceforge.net/projects/xtdpro/) 
 * [Reference Guide](https://gammasoft71.github.io/xtd/reference_guides/latest/index.html)
