@@ -1,10 +1,10 @@
 # xtd_tools
 
-**The xtd_tools project is a collection of tools to help [xtd](https://gammasoft71.wixsite.com/xtdpro) development. This project works on Windows, macOS and Linux platforms.**
+**The xtd_tools project is a collection of tools to help [xtd](https://gammasoft71.github.io/xtd/) development. This project works on Windows, macOS and Linux platforms.**
 
-[![logo](https://github.com/gammasoft71/xtd_tools/blob/main/docs/pictures/logo.png)](https://gammasoft71.wixsite.com/xtdpro)
+[![logo](https://github.com/gammasoft71/xtd_tools/blob/main/docs/pictures/logo.png)](https://gammasoft71.github.io/xtd/)
 
-[![License](https://img.shields.io/github/license/gammasoft71/xtd)](https://github.com/gammasoft71/xtd_tools/blob/master/docs/license.md) [![Language](https://img.shields.io/badge/language-C++17/20-004080.svg)](https://github.com/gammasoft71/xtd/blob/master/docs/portability.md#c++17) [![web](https://img.shields.io/badge/website-xtd-004080.svg)](https://gammasoft71.wixsite.com/xtdpro) [![discord](https://img.shields.io/badge/discord-gammasoft-7289DA.svg)](https://discordapp.com/users/gammasoft#9288)
+[![License](https://img.shields.io/github/license/gammasoft71/xtd)](https://gammasoft71.github.io/xtd/docs/documentation/license) [![Language](https://img.shields.io/badge/language-C++17/20-004080.svg)](https://gammasoft71.github.io/xtd/docs/documentation/portability#c++17) [![web](https://img.shields.io/badge/website-xtd-004080.svg)](https://gammasoft71.github.io/xtd/) [![discord](https://img.shields.io/badge/discord-gammasoft-7289DA.svg)](https://discordapp.com/users/gammasoft#9288)
  
 ## Features
 
@@ -19,15 +19,16 @@
 ## Screenshots
 
 ![screenshot](https://github.com/gammasoft71/xtd_tools/blob/main/docs/pictures/xtd_tools_m.png)
+
 ![screenshot](https://github.com/gammasoft71/xtd_tools/blob/main/docs/pictures/xtd_tools_md.png)
 
 ## xtd
 
-This project is entirely written with the [xtd](https://gammasoft71.wixsite.com/xtdpro) framework.
+This project is entirely written with the [xtd](https://gammasoft71.github.io/xtd/) framework.
 
 For more information about xtd see :
-* [website](https://gammasoft71.wixsite.com/xtdpro)
-* [wiki](https://github.com/gammasoft71/xtd/blob/master/docs/home.md)
+* [website](https://gammasoft71.github.io/xtd/)
+* [wiki](https://github.com/gammasoft71/xtd/wiki)
 * [github](https://github.com/gammasoft71/xtd) 
 * [project](https://sourceforge.net/projects/xtdpro/) 
-* [Reference Guide](https://codedocs.xyz/gammasoft71/xtd/index.html)
+* [Reference Guide](https://gammasoft71.github.io/xtd/reference_guides/latest/index.html)
