@@ -27,7 +27,8 @@ release_note_generator_form::release_note_generator_form() {
   project_path_text_box.location({90, 10});
   project_path_text_box.width(880);
   project_path_text_box.anchor(anchor_styles::left | anchor_styles::top |anchor_styles::right);
-  
+  project_path_text_box.placeholder_text("xtd sources path");
+
   state_label.text("State");
   state_label.auto_size(true);
   state_label.location({10, 42});

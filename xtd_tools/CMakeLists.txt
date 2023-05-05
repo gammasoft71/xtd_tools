@@ -10,6 +10,8 @@ add_sources(
   src/color_converter_form.cpp
   src/doxygen_example_generator_form.h
   src/doxygen_example_generator_form.cpp
+  src/enumeration_unit_tests_generator_form.h
+  src/enumeration_unit_tests_generator_form.cpp
   src/release_note_generator_form.h
   src/release_note_generator_form.cpp
   src/sources_statistics_form.h
