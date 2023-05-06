@@ -51,6 +51,7 @@ namespace xtd_tools {
         "      result += ustring::format(\"    void test_method_({}) {{\\n\", key);",
         "      result += ustring::format(\"      assert::are_equal({}, enum_object<>::to_int32({}::{}), csf_);\\n\", as<int32>(key), ustring::class_name<enum_t>(), value);",
         "      result += ustring::format(\"      assert::are_equal(\\\"{}\\\", enum_object<>::to_string({}::{}), csf_);\\n\", key, ustring::class_name<enum_t>(), value);",
+        "      result += ustring::format(\"      assert::are_equal({}::{}, enum_object<>::parse<{}>(\\\"{}\\\"), csf_);\\n\", ustring::class_name<enum_t>(), value, ustring::class_name<enum_t>(), key);",
         "      result += \"    }\\n\";",
         "      first = false;",
         "    }",
