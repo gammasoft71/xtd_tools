@@ -180,7 +180,7 @@ xtd::ustring doxygen_example_generator_form::generate_xtd_forms_examples() {
 }
 
 xtd::ustring doxygen_example_generator_form::generate_xtd_tunit_examples() {
-  ustring result;
+  auto result = ustring::empty_string;
   result += ustring::format("/// @file\n");
   result += ustring::format("/// @brief Contains xtd.tunit examples.\n");
   result += ustring::format("///\n");

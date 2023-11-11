@@ -49,7 +49,7 @@ release_note_generator_form::release_note_generator_form() {
   milestone_text_box.anchor(anchor_styles::left | anchor_styles::top |anchor_styles::right);
 
   generate_button.click += [&]{
-    progress_dialog dialog;
+    auto dialog = progress_dialog {};
     dialog.text("Generate...");
     dialog.marquee(true);
     dialog.show_dialog(*this);
@@ -69,12 +69,12 @@ xtd::ustring release_note_generator_form::generate_release_note(const xtd::ustri
   auto repository = get_repository(project_path);
   if (repository == "") return "";
 
-  process generate_process;
-  process_start_info psi;
+  auto generate_process = process {};
+  auto psi = process_start_info {};
   generate_process.start_info().use_shell_execute(false);
   generate_process.start_info().file_name("gh");
   
-  ustring arguments = "issue list --limit 100000";
+  auto arguments = "issue list --limit 100000"_s;
   if (state != "") arguments += ustring::format(" --state {}", state);
   if (milestone != "") arguments += ustring::format(" --milestone {}", milestone);
   generate_process.start_info().arguments(arguments);
@@ -90,8 +90,8 @@ xtd::ustring release_note_generator_form::generate_release_note(const xtd::ustri
   application::do_events();
   std::istream& standard_output = generate_process.standard_output();
   
-  ustring result;
-  stream_reader reader(standard_output);
+  auto result = ustring::empty_string;
+  auto reader = stream_reader  {standard_output};
   while (!reader.end_of_stream()) {
     auto line = reader.read_line();
     //xtd::diagnostics::debug::write_line(line);
@@ -112,15 +112,15 @@ xtd::ustring release_note_generator_form::generate_release_note(const xtd::ustri
 }
 
 xtd::ustring release_note_generator_form::get_repository(const xtd::ustring& project_path) {
-  static ustring repository;
+  static auto repository = ustring::empty_string;
   if (repository != "") return repository;
   
-  process get_repository_process;
-  process_start_info psi;
+  auto get_repository_process = process {};
+  auto psi = process_start_info {};
   get_repository_process.start_info().use_shell_execute(false);
   get_repository_process.start_info().file_name("gh");
   
-  ustring arguments = "repo view";
+  auto arguments = "repo view"_s;
   get_repository_process.start_info().arguments(arguments);
   get_repository_process.start_info().working_directory(project_path);
   get_repository_process.start_info().redirect_standard_output(true);
@@ -132,9 +132,9 @@ xtd::ustring release_note_generator_form::get_repository(const xtd::ustring& pro
     return "";
   }
   application::do_events();
-  std::istream& standard_output = get_repository_process.standard_output();
+  auto& standard_output = get_repository_process.standard_output();
   
-  stream_reader reader(standard_output);
+  auto reader = stream_reader {standard_output};
   application::do_events();
   repository = reader.read_line().replace("name:\t", "");
   while (!reader.end_of_stream()) {

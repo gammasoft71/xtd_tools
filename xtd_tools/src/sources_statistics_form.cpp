@@ -87,20 +87,20 @@ sources_statistics_form::sources_statistics_form() {
 }
 
 xtd::ustring sources_statistics_form::analyse_path(const ustring& path, const ustring& output_format) {
-  diagnostics::process_start_info psi {"cloc", ustring::format("--hide-rate --quiet --exclude-dir=build,reference_guide,resources {} {}", output_format, path)};
+  auto psi = diagnostics::process_start_info {"cloc", ustring::format("--hide-rate --quiet --exclude-dir=build,reference_guide,resources {} {}", output_format, path)};
   psi.use_shell_execute(false);
   psi.create_no_window(true);
   psi.redirect_standard_output(true);
   auto process = diagnostics::process::start(psi);
   process.wait_for_exit();
-  return stream_reader(process.standard_output()).read_to_end();
+  return stream_reader {process.standard_output()}.read_to_end();
 }
 
 bool sources_statistics_form::is_cloc_process_exist() {
-  static bool found = false;
+  static auto found = false;
   if (found) return true;
   try {
-    diagnostics::process_start_info psi {"cloc", "--version"};
+    auto psi = diagnostics::process_start_info {"cloc", "--version"};
     psi.use_shell_execute(false);
     psi.create_no_window(true);
     diagnostics::process::start(psi);
@@ -113,7 +113,7 @@ bool sources_statistics_form::is_cloc_process_exist() {
 
 void sources_statistics_form::on_analyse_click() {
   auto output_format = as<ustring>(format_choice.selected_item().tag());
-  progress_dialog dialog;
+  auto dialog = progress_dialog {};
   dialog.maximum(4);
   dialog.show(*this);
   dialog.value(1);
@@ -136,7 +136,7 @@ void sources_statistics_form::on_analyse_click() {
 }
 
 void sources_statistics_form::on_browse_click() {
-  folder_browser_dialog dialog;
+  auto dialog = folder_browser_dialog {};
   dialog.selected_path(path_text_box.text());
   if (dialog.show_sheet_dialog(*this) == forms::dialog_result::ok)
     path_text_box.text(dialog.selected_path());
