@@ -62,12 +62,12 @@ namespace xtd_tools {
         "  }",
         "};",
         "",
-        "startup_(program);",
+        "startup_(program::main);",
       };
     }
     static std::vector<xtd::ustring> get_cmakelist_file_text() {
       return {
-        "cmake_minimum_required(VERSION 3.3)",
+        "cmake_minimum_required(VERSION 3.20)",
         "",
         "# Project",
         "project(xtd_enum_project)",
