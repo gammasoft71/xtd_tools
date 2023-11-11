@@ -28,9 +28,11 @@ namespace xtd_tools {
     xtd::forms::tab_page sources_result_tab_page;
     xtd::forms::tab_page tests_result_tab_page;
     xtd::forms::tab_page examples_result_tab_page;
+    xtd::forms::tab_page tools_result_tab_page;
     xtd::forms::text_box all_result_text_box;
     xtd::forms::text_box sources_result_text_box;
     xtd::forms::text_box tests_result_text_box;
     xtd::forms::text_box examples_result_text_box;
+    xtd::forms::text_box tools_result_text_box;
   };
 }

@@ -37,13 +37,14 @@ sources_statistics_form::sources_statistics_form() {
   
   result_tab_control.bounds({10, 45, 780, 545});
   result_tab_control.anchor(anchor_styles::left | anchor_styles::top | anchor_styles::right | anchor_styles::bottom);
-  result_tab_control.tab_pages().push_back_range({all_result_tab_page, sources_result_tab_page, tests_result_tab_page, examples_result_tab_page});
+  result_tab_control.tab_pages().push_back_range({all_result_tab_page, sources_result_tab_page, tests_result_tab_page, examples_result_tab_page, tools_result_tab_page});
   
   all_result_tab_page.text("All");
   sources_result_tab_page.text("Sources");
   tests_result_tab_page.text("Tests");
   examples_result_tab_page.text("Examples");
-  
+  tools_result_tab_page.text("tools");
+
   all_result_text_box.parent(all_result_tab_page);
   all_result_text_box.accepts_return(true);
   all_result_text_box.accepts_tab(true);
@@ -75,6 +76,14 @@ sources_statistics_form::sources_statistics_form() {
   examples_result_text_box.multiline(true);
   examples_result_text_box.read_only(true);
   examples_result_text_box.font({drawing::font_family::generic_monospace(), examples_result_text_box.font().size()});
+
+  tools_result_text_box.parent(tools_result_tab_page);
+  tools_result_text_box.accepts_return(true);
+  tools_result_text_box.accepts_tab(true);
+  tools_result_text_box.dock(dock_style::fill);
+  tools_result_text_box.multiline(true);
+  tools_result_text_box.read_only(true);
+  tools_result_text_box.font({drawing::font_family::generic_monospace(), tools_result_text_box.font().size()});
 }
 
 xtd::ustring sources_statistics_form::analyse_path(const ustring& path, const ustring& output_format) {
@@ -120,6 +129,9 @@ void sources_statistics_form::on_analyse_click() {
   application::do_events();
   if (directory::exists(path::combine(path_text_box.text(), "examples"))) examples_result_text_box.text(analyse_path(path::combine(path_text_box.text(), "examples"), output_format));
   application::do_events();
+  dialog.value(5);
+  application::do_events();
+  if (directory::exists(path::combine(path_text_box.text(), "tools"))) tools_result_text_box.text(analyse_path(path::combine(path_text_box.text(), "tools"), output_format));
   dialog.hide();
 }
 
