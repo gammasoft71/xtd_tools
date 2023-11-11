@@ -9,7 +9,6 @@ style_sheet_renderer_form::style_sheet_renderer_form() {
   text("Style sheet renderer");
   client_size({1000, 400});
   minimize_box(false);
-  show_icon(false);
   minimum_client_size({800, 200});
   controls().push_back_range({style_sheet_text_box, run_button, style_heet_panel});
   
