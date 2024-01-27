@@ -11,6 +11,7 @@ release_note_generator_form::release_note_generator_form() {
   client_size({1000, 600});
   controls().push_back_range({release_note_text_box, controls_panel});
   minimize_box(false);
+  accept_button(generate_button);
 
   padding(10);
   
