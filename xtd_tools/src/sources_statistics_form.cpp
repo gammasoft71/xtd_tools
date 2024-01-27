@@ -13,7 +13,8 @@ sources_statistics_form::sources_statistics_form() {
   text("Sources statistics");
   controls().push_back_range({browse_button, path_text_box, format_choice, analyse_button, result_tab_control});
   client_size({800, 600});
-  
+  accept_button(analyse_button);
+
   browse_button.text("Browse");
   browse_button.bounds({10, 10, 100, 25});
   browse_button.click += {*this, &sources_statistics_form::on_browse_click};
