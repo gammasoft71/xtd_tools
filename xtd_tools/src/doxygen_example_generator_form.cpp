@@ -30,7 +30,8 @@ doxygen_example_generator_form::doxygen_example_generator_form() {
   text("Doxygen examples generator");
   controls().push_back_range({xtd_examples_choice, generate_button, result_text_box});
   client_size({800, 600});
-  
+  accept_button(generate_button);
+
   xtd_examples_choice.items().push_back_range({"xtd.core", "xtd.drawing", "xtd.forms", "xtd.tunit", "xtd.cmake"});
   xtd_examples_choice.bounds({10, 10, 660, 25});
   xtd_examples_choice.anchor(anchor_styles::left |anchor_styles::top | anchor_styles::right);
