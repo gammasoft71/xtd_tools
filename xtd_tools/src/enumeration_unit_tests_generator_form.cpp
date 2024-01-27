@@ -11,7 +11,8 @@ enumeration_unit_tests_generator_form::enumeration_unit_tests_generator_form() {
   text("Enumeration unit tests generator");
   controls().push_back_range({enumeration_text_box, generate_button, result_text_box});
   client_size({800, 600});
-  
+  accept_button(generate_button);
+
   enumeration_text_box.bounds({10, 10, 660, 25});
   enumeration_text_box.anchor(anchor_styles::left |anchor_styles::top | anchor_styles::right);
   enumeration_text_box.placeholder_text("Enumeration name with namespace (example: xtd::net::sockets::address_family)");
