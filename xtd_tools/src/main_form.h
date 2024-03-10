@@ -3,7 +3,9 @@
 #pragma once
 #include <vector>
 #include <memory>
+#include <xtd/drawing/texts>
 #include <xtd/xtd.forms>
+#include "check_doxygen_form.h"
 #include "color_converter_form.h"
 #include "doxygen_example_generator_form.h"
 #include "enumeration_unit_tests_generator_form.h"
@@ -30,6 +32,7 @@ namespace xtd_tools {
       childs[childs.size() - 1]->form_closed += {*this, &main_form::on_child_form_closed};
     }
 
+    void on_check_doxygen_click();
     void on_child_form_closed(xtd::object& sender, const xtd::forms::form_closed_event_args& e);
     void on_count_examples_double_click();
     void on_help_about_menu_item_click(xtd::object& sender, const xtd::event_args& e);
@@ -38,19 +41,20 @@ namespace xtd_tools {
     xtd::forms::list_box tools_list_box;
     std::vector<std::shared_ptr<xtd::forms::form>> childs;
 
+    xtd::forms::menu_item tools_check_doxygen_menu_item {"Check doxigen", {*this, &main_form::creates_form<check_doxygen_form>}};
     xtd::forms::menu_item tools_color_converter_menu_item {"&Color converter", {*this, &main_form::creates_form<color_converter_form>}};
     xtd::forms::menu_item tools_count_example_menu_item {"Count &examples", {*this, &main_form::on_count_examples_double_click}};
     xtd::forms::menu_item tools_release_note_generator_menu_item {"&Release note generator", {*this, &main_form::creates_form<release_note_generator_form>}};
     xtd::forms::menu_item tools_sources_statistics_menu_item {"&Sources statistics", {*this, &main_form::creates_form<sources_statistics_form>}};
     xtd::forms::menu_item tools_style_sheet_renderer_menu_item {"S&tyle sheet renderer", {*this, &main_form::creates_form<style_sheet_renderer_form>}};
     xtd::forms::menu_item tools_separator_menu_item {"-"};
-    xtd::forms::menu_item tools_exit_menu_item {xtd::forms::system_texts::exit(), overload_<>(&xtd::forms::application::exit), xtd::forms::shortcut::alt_f4};
-    xtd::forms::menu_item tools_menu_item {"&Tools", {tools_color_converter_menu_item, tools_count_example_menu_item, tools_release_note_generator_menu_item, tools_sources_statistics_menu_item, tools_style_sheet_renderer_menu_item, tools_separator_menu_item, tools_exit_menu_item}};
+    xtd::forms::menu_item tools_exit_menu_item {xtd::drawing::texts::exit(), overload_<>(&xtd::forms::application::exit), xtd::forms::shortcut::alt_f4};
+    xtd::forms::menu_item tools_menu_item {"&Tools", {tools_check_doxygen_menu_item, tools_color_converter_menu_item, tools_count_example_menu_item, tools_release_note_generator_menu_item, tools_sources_statistics_menu_item, tools_style_sheet_renderer_menu_item, tools_separator_menu_item, tools_exit_menu_item}};
 
     xtd::forms::menu_item help_xtd_reference_guide_item {"&xtd reference guide", {*this, &main_form::on_help_xtd_reference_guide_item_click}};
     xtd::forms::menu_item help_separator_menu_item {"-"};
-    xtd::forms::menu_item help_about_menu_item {xtd::forms::system_texts::about(), {*this, &main_form::on_help_about_menu_item_click}};
-    xtd::forms::menu_item help_menu_item {xtd::forms::system_texts::help(), {help_xtd_reference_guide_item, help_separator_menu_item, help_about_menu_item}};
+    xtd::forms::menu_item help_about_menu_item {xtd::drawing::texts::about(), {*this, &main_form::on_help_about_menu_item_click}};
+    xtd::forms::menu_item help_menu_item {xtd::drawing::texts::help(), {help_xtd_reference_guide_item, help_separator_menu_item, help_about_menu_item}};
 
     xtd::forms::main_menu main_menu {tools_menu_item, help_menu_item};
   };

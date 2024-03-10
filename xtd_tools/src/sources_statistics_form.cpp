@@ -19,10 +19,10 @@ sources_statistics_form::sources_statistics_form() {
   browse_button.bounds({10, 10, 100, 25});
   browse_button.click += {*this, &sources_statistics_form::on_browse_click};
   
-  path_text_box.placeholder_text("xtd sources path");
+  path_text_box.placeholder_text("xtd path");
   path_text_box.bounds({120, 10, 450, 25});
   path_text_box.anchor(anchor_styles::left | anchor_styles::top | anchor_styles::right);
-  path_text_box.text(properties::settings().xtd_sources_path());
+  path_text_box.text(properties::settings().xtd_path());
   path_text_box.text_changed += {*this, &sources_statistics_form::on_path_text_changed};
   
   format_choice.items().push_back_range({{"Standard", " "}, {"CSV", "--csv"}, {"Json", "--json"}, {"Markdown", "--md"}, {"XML", "--xml"}, {"YAML", "--yaml"}});
@@ -145,7 +145,7 @@ void sources_statistics_form::on_browse_click() {
 
 void sources_statistics_form::on_form_closed(const xtd::forms::form_closed_event_args& e) {
   diagnostics::debug::write_line(ustring::format("path = {}", path_text_box.text()));
-  properties::settings::default_settings().xtd_sources_path(path_text_box.text());
+  properties::settings::default_settings().xtd_path(path_text_box.text());
   properties::settings::default_settings().save();
   form::on_form_closed(e);
 }

@@ -6,6 +6,8 @@ find_package(xtd REQUIRED)
 add_sources(
   src/main_form.h
   src/main_form.cpp
+  src/check_doxygen_form.h
+  src/check_doxygen_form.cpp
   src/color_converter_form.h
   src/color_converter_form.cpp
   src/doxygen_example_generator_form.h
