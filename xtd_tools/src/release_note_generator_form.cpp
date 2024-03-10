@@ -51,9 +51,9 @@ release_note_generator_form::release_note_generator_form() {
 
   generate_button.click += [&]{
     auto dialog = progress_dialog {};
-    dialog.text("Generate...");
+    dialog.message("Please wait...");
     dialog.marquee(true);
-    dialog.show_dialog(*this);
+    dialog.show_sheet_dialog(*this);
     application::do_events();
     release_note_text_box.text(generate_release_note(project_path_text_box.text(), state_choice.selected_item().value(), milestone_text_box.text()));
   };

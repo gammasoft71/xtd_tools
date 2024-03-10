@@ -115,8 +115,9 @@ bool sources_statistics_form::is_cloc_process_exist() {
 void sources_statistics_form::on_analyse_click() {
   auto output_format = as<ustring>(format_choice.selected_item().tag());
   auto dialog = progress_dialog {};
+  dialog.message("Please wait...");
   dialog.maximum(4);
-  dialog.show(*this);
+  dialog.show_sheet_dialog(*this);
   dialog.value(1);
   application::do_events();
   if (directory::exists(path_text_box.text())) all_result_text_box.text(analyse_path(path_text_box.text(), output_format));

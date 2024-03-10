@@ -198,12 +198,12 @@ check_doxygen_form::check_doxygen_form() {
   result_text_box.font({drawing::font_family::generic_monospace(), result_text_box.font().size()});
   
   progress_dialog.marquee(true);
-  progress_dialog.text("checking...");
+  progress_dialog.message("Please wait...");
 }
 
 void check_doxygen_form::on_check_click() {
   check_button.enabled(false);
-  progress_dialog.show(*this);
+  progress_dialog.show_sheet_dialog(*this);
   thread_pool::queue_user_work_item([&, path = path_text_box.text()] {
     auto test = std::make_shared<check_doxygen_keywords>(path);
     auto result = test->check();
